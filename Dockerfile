@@ -24,6 +24,8 @@ RUN uv sync --frozen
 
 # 7. Copy the rest of your application code
 COPY ./app ./app
+COPY ./src ./src
+COPY ./static ./static
 
 # 8. Expose the port
 EXPOSE 8000

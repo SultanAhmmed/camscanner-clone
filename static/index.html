@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CamScanner Clone - Document Scanner</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>📄 CamScanner Clone</h1>
+            <p>Upload document images and convert them to professional PDFs</p>
+        </header>
+
+        <main>
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="drop-zone" id="dropZone">
+                    <div class="drop-zone-content">
+                        <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                        </svg>
+                        <h3>Drag & drop your images here</h3>
+                        <p>or click to browse files</p>
+                        <input type="file" id="fileInput" multiple accept="image/*" hidden>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Preview Section -->
+            <section class="preview-section" id="previewSection" style="display: none;">
+                <h2>Selected Files (<span id="fileCount">0</span>)</h2>
+                <div class="preview-grid" id="previewGrid"></div>
+                <button class="btn btn-secondary" id="clearBtn">Clear All</button>
+            </section>
+
+            <!-- Settings Section -->
+            <section class="settings-section" id="settingsSection" style="display: none;">
+
+                <h2>Processing Options</h2>
+                <div class="mode-selector">
+                    <label class="mode-option">
+                        <input type="radio" name="mode" value="original" checked>
+                        <span class="mode-label">
+                            <strong>Original</strong>
+                            <small>Just Keep the original images</small>
+                        </span>
+                    </label>
+                    <label class="mode-option">
+                        <input type="radio" name="mode" value="scan" checked>
+                        <span class="mode-label">
+                            <strong>Scan</strong>
+                            <small>Black & White, crisp text</small>
+                        </span>
+                    </label>
+                    <label class="mode-option">
+                        <input type="radio" name="mode" value="color">
+                        <span class="mode-label">
+                            <strong>Color</strong>
+                            <small>Original colors preserved</small>
+                        </span>
+                    </label>
+                    <label class="mode-option">
+                        <input type="radio" name="mode" value="gray">
+                        <span class="mode-label">
+                            <strong>Gray</strong>
+                            <small>Grayscale with shadows</small>
+                        </span>
+                    </label>
+                    <label class="mode-option">
+                        <input type="radio" name="mode" value="enhanced">
+                        <span class="mode-label">
+                            <strong>Enhanced</strong>
+                            <small>High contrast, improved readability</small>
+                        </span>
+                    </label>
+                </div>
+
+                <button class="btn btn-primary" id="processBtn">
+                    <span class="btn-text">Generate PDF</span>
+                    <span class="btn-loader" style="display: none;">Processing...</span>
+                </button>
+            </section>
+
+            <!-- Result Section -->
+            <section class="result-section" id="resultSection" style="display: none;">
+                <h2>✅ Your PDF is ready!</h2>
+                <a href="#" id="downloadLink" class="btn btn-primary" download="scanned_document.pdf">
+                    Download PDF
+                </a>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
