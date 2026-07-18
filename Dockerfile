@@ -19,7 +19,8 @@ WORKDIR /app
 COPY pyproject.toml uv.lock ./
 
 # 6. Install dependencies using uv (super fast!)
-RUN uv sync --frozen --no-dev
+# RUN uv sync --frozen --no-dev
+RUN uv sync --frozen
 
 # 7. Copy the rest of your application code
 COPY ./app ./app
@@ -28,4 +29,5 @@ COPY ./app ./app
 EXPOSE 8000
 
 # 9. Run the app using uv's environment
-CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000","--reload"]
+
